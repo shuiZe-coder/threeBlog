@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客管理登录</title>
+  <link href="../../static/images/me.jpg" th:href="@{/images/me.jpg}" rel="icon" type="image/x-ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+  <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<style>
+  #loginError{
+    display: none;
+  }
+</style>
+<script>
+  $(document).ready(function () {
+    $("#login").click(function (){
+      $("#loginError").hide();
+      var username = $("#username").val();
+      var password = $("#password").val();
+      if (username == "" || password == ""){
+        return
+      }
+      var data = {
+        "username": username,
+        "password": password
+      }
+      $.post("/admin/verify", data, function (data) {
+        if (data.code == 1){
+          location.href = "http://localhost:9999/admin";
+        }else{
+          $("#loginError").show();
+          $("#password").val("");
+        }
+      }, "json");
+    });
+  })
+</script>
+
+<style>
+
+</style>
+<body>
+
+<br>
+<br>
+<br>
+ <div class="m-container-small m-padded-tb-massive" style="max-width: 30em !important;">
+   <div class="ur container">
+     <div class="ui middle aligned center aligned grid">
+       <div class="column">
+         <h2 class="ui teal image header">
+           <div class="content" style="color: #696969">
+             管理后台登录
+           </div>
+         </h2>
+         <div class="ui large form" method="post" action="/admin/verifyUser">
+           <div class="ui  segment">
+             <div class="field">
+               <div class="ui left icon input">
+                 <i class="user icon"></i>
+                 <input type="text" id="username" placeholder="用户名">
+               </div>
+             </div>
+             <div class="field">
+               <div class="ui left icon input">
+                 <i class="lock icon"></i>
+                 <input type="password" id="password" placeholder="密码">
+               </div>
+             </div>
+             <button class="ui fluid large teal submit button" id="login">登   录</button>
+           </div>
+
+           <div class="ui error mini message"></div>
+
+           <div class="ui mini negative message"  id="loginError" >用户名或密码错误</div>
+
+         </div>
+
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+
+
+<script>
+  $('.ui.form').form({
+    fields : {
+      username : {
+        identifier: 'username',
+        rules: [{
+          type : 'empty',
+          prompt: '请输入用户名'
+        }]
+      },
+      password : {
+        identifier: 'password',
+        rules: [{
+          type : 'empty',
+          prompt: '请输入密码'
+        }]
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>
