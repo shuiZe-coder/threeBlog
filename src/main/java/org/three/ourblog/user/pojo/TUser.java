@@ -1,7 +1,10 @@
 package org.three.ourblog.user.pojo;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -29,6 +32,7 @@ public class TUser implements Serializable {
 
     private String avatar;
 
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     private String email;
@@ -39,9 +43,8 @@ public class TUser implements Serializable {
 
     private Integer type;
 
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
     private String username;
-
-
 }

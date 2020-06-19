@@ -48,7 +48,7 @@ class OurblogApplicationTests {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("user"); // 模块名
+        pc.setModuleName("type"); // 模块名
         pc.setParent("org.three.ourblog");
         pc.setController("controller");
         pc.setEntity("pojo");
@@ -58,7 +58,7 @@ class OurblogApplicationTests {
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("t_user"); // 设置要映射的表名
+        strategy.setInclude("t_type"); // 设置要映射的表名
         strategy.setNaming(NamingStrategy.underline_to_camel); // 数据库表映射实体的命名策略
         strategy.setTablePrefix(pc.getModuleName() + "_"); // 生成实体时去掉表前缀
         strategy.setColumnNaming(NamingStrategy.underline_to_camel); // 数据库表字段映射到实体的命名策略
