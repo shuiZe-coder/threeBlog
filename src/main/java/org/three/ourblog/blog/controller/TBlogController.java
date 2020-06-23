@@ -4,6 +4,7 @@ package org.three.ourblog.blog.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import org.three.ourblog.blog.pojo.TBlog;
@@ -51,6 +52,7 @@ public class TBlogController {
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     public RespUtil delBlog(@PathVariable long id){
         boolean isTrue = blogService.removeById(id);
         if (isTrue){
@@ -61,6 +63,7 @@ public class TBlogController {
     }
 
     @PostMapping
+    @Transactional
     public RespUtil addBlog(@RequestBody TBlog blog){
         boolean save = blogService.save(blog);
         if (save){
@@ -71,6 +74,7 @@ public class TBlogController {
     }
 
     @PutMapping
+    @Transactional
     public RespUtil updateBlog(@RequestBody TBlog blog){
         boolean update = blogService.update(blog, null);
         if (update){
@@ -78,6 +82,11 @@ public class TBlogController {
         }else{
             return RespUtil.error().message("修改博客失败");
         }
+    }
+
+    @PostMapping("/content")
+    public RespUtil content(TBlog blog){
+        return RespUtil.ok().data("data", blog);
     }
 }
 

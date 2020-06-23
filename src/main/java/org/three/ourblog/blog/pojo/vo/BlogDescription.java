@@ -2,6 +2,7 @@ package org.three.ourblog.blog.pojo.vo;
 
 import lombok.Data;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -12,5 +13,6 @@ public class BlogDescription {
     private String title;
     private String type;
     private Boolean shareStatement;
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date updateTime;
 }

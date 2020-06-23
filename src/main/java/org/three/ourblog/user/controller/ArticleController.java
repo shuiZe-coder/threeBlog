@@ -17,4 +17,9 @@ public class ArticleController {
     public String manage(){
         return "/admin/blogs";
     }
+
+    @GetMapping("/add")
+    public String add(){
+        return "/admin/blogs-input";
+    }
 }
