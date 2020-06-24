@@ -6,6 +6,9 @@ spring:
     url: jdbc:mysql://10.88.1.168:3306/blog?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: liyun
     password: liyun
+  mvc:
+    servlet:
+      load-on-startup: 1
 logging:
   file:
     path: log
