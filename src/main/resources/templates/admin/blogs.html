@@ -28,10 +28,13 @@
                     $("#id" + i).html(item.id);
                     $("#title" + i).html(item.title);
                     $("#type" + i).html(item.type);
-                    $("#share" + i).html(item.shareStatement);
-                    if (item.published == undefined) {
-                        $("#published" + i).html("草稿");
-                    }
+                    $("#share" + i).html(item.shareStatement==false ? "否" : "是");
+                    $("#published" + i).html(item.published==false ? "草稿" : "已发布");
+                    // if (item.published == false) {
+                    //     $("#published" + i).html("草稿");
+                    // }else{
+                    //     $("published" + i).html("已发布");
+                    // }
                     $("#updateTime" + i).html(item.updateTime);
                 }
             })
@@ -68,7 +71,13 @@
             showData(currentPage);
         });
 
-
+        $(".edit").click(function () {
+            var currentId = $(this).parent().siblings()[0].textContent;
+            if (currentId == null){
+                return
+            }
+            location.href = "/admin/article/update/" + currentId;
+        })
     })
 </script>
 
@@ -148,7 +157,7 @@
                     <td id="updateTime1">2020-01-02 05:20</td>
                     <td>
                         <!--th:href="@{/admin/types/{id}/input(id=${type.id})}"-->
-                        <a href="#" class="ui mini teal basic button">编辑</a>
+                        <a href="#" class="ui mini teal basic button edit">编辑</a>
                         <a href="#" onclick="return confirm('确定要删除该文章吗？三思啊! 删了可就没了！')" class="ui mini red basic button">删除</a>
                     </td>
                 </tr>
@@ -162,7 +171,7 @@
                     <td id="updateTime2">2020-01-02 05:20</td>
                     <td>
                         <!--th:href="@{/admin/types/{id}/input(id=${type.id})}"-->
-                        <a href="#" class="ui mini teal basic button">编辑</a>
+                        <a href="#" class="ui mini teal basic button edit">编辑</a>
                         <a href="#" onclick="return confirm('确定要删除该文章吗？三思啊! 删了可就没了！')" class="ui mini red basic button">删除</a>
                     </td>
                 </tr>
@@ -175,7 +184,7 @@
                     <td id="updateTime3">2020-01-02 05:20</td>
                     <td>
                         <!--th:href="@{/admin/types/{id}/input(id=${type.id})}"-->
-                        <a href="#" class="ui mini teal basic button">编辑</a>
+                        <a href="#" class="ui mini teal basic button edit">编辑</a>
                         <a href="#" onclick="return confirm('确定要删除该文章吗？三思啊! 删了可就没了！')" class="ui mini red basic button">删除</a>
                     </td>
                 </tr>
@@ -188,7 +197,7 @@
                     <td id="updateTime4">2020-01-02 05:20</td>
                     <td>
                         <!--th:href="@{/admin/types/{id}/input(id=${type.id})}"-->
-                        <a href="#" class="ui mini teal basic button">编辑</a>
+                        <a href="#" class="ui mini teal basic button edit">编辑</a>
                         <a href="#" onclick="return confirm('确定要删除该文章吗？三思啊! 删了可就没了！')" class="ui mini red basic button">删除</a>
                     </td>
                 </tr>
@@ -201,7 +210,7 @@
                     <td id="updateTime5">2020-01-02 05:20</td>
                     <td>
                         <!--th:href="@{/admin/types/{id}/input(id=${type.id})}"-->
-                        <a href="#" class="ui mini teal basic button">编辑</a>
+                        <a href="#" class="ui mini teal basic button edit">编辑</a>
                         <a href="#" onclick="return confirm('确定要删除该文章吗？三思啊! 删了可就没了！')" class="ui mini red basic button">删除</a>
                     </td>
                 </tr>

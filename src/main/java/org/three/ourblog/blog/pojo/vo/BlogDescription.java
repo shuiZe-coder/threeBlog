@@ -15,4 +15,5 @@ public class BlogDescription {
     private Boolean shareStatement;
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date updateTime;
+    private Boolean published;
 }

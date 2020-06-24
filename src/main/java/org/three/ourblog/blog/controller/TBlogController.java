@@ -62,6 +62,17 @@ public class TBlogController {
         }
     }
 
+    @GetMapping("/{id}")
+    @Transactional
+    public RespUtil getBlog(@PathVariable Long id){
+        TBlog blog = blogService.getById(id);
+        if (blog != null){
+            return RespUtil.ok().message("查询博客成功").data("data", blog);
+        }else{
+            return RespUtil.error().message("查询博客为空");
+        }
+    }
+
     @PostMapping
     @Transactional
     public RespUtil addBlog(@RequestBody TBlog blog){

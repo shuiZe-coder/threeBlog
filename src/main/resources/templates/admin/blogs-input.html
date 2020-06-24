@@ -18,8 +18,8 @@
     <div class="ui attached pointing menu">
         <div class="ui container">
             <div class="right menu">
-                <a href="#" class="teal active item">发布</a>
-                <a href="#" class="item">列表</a>
+                <a href="javascript:void(0)" class="teal active item">发布</a>
+                <a href="/admin/article/manage" class="item">列表</a>
             </div>
         </div>
     </div>
@@ -201,88 +201,70 @@
     });
 
 
-    $('#publish-btn').click(function () {
+    /*$('#publish-btn').click(function () {
         $('[name="published"]').val(true);
         $('#blog-form').submit();
-    });
+    });*/
 
 
-    $('.ui.form').form({
-        fields: {
-            title: {
-                identifier: 'title',
-                rules: [{
-                    type: 'empty',
-                    prompt: '标题：请输入博客标题'
-                }]
-            },
-            content: {
-                identifier: 'content',
-                rules: [{
-                    type: 'empty',
-                    prompt: '标题：请输入博客内容'
-                }]
-            },
-            typeId: {
-                identifier: 'type.id',
-                rules: [{
-                    type: 'empty',
-                    prompt: '标题：请输入博客分类'
-                }]
-            },
-            firstPicture: {
-                identifier: 'firstPicture',
-                rules: [{
-                    type: 'empty',
-                    prompt: '标题：请输入博客首图'
-                }]
-            },
-            description: {
-                identifier: 'description',
-                rules: [{
-                    type: 'empty',
-                    prompt: '标题：请输入博客描述'
-                }]
-            }
+    function typeId() {
+        if ($("#typeBox").children().length == 0) {
+            $.get('/type', function (data) {
+                for (var i = 0; i < data.data.data.length; i++) {
+                    $("#typeBox").append('<div class="item" id="type" data-value="1">' + data.data.data[i].name + '</div>')
+                    $("#typeBox").children('div').eq(i).attr("nameId", data.data.data[i].id);
+
+                }
+                //console.log($("#typeBox").children('div').length + "the one");
+                $("#typeBox").children('div').click(function () {
+                    //alert("调用成功");
+                    blogType = $(this).attr("nameId");
+                });
+            })
+        } else {
+            return;
         }
-    });
-    // $('#save-btn').click(function () {
-    //     $('[name="published"]').val(false);
-    //     $('#blog-form').submit();
-    // });
 
-    $('#save-btn').click(function () {
+
+    }
+
+    function postData(published) {
         var title = $("#title").val();
         var content = $("#content").val();
         var typeId = $("#type").nameId;
         var firstPicture = $("#firstPictures").val();
         var description = $("#descriptions").val();
-        /*        var recommend = '';
-                var shareStatement = '';
-                var appreciation = '';
-                var commentabled = '';*/
 
         //设置表单
         var form_data = {
             "title": title,
             "content": content,
-            "typeId": typeId,
+            "typeId": blogType,
             "firstPicture": firstPicture,
-            "description": description
+            "description": description,
+            "published": published,
 
         };
         //获取勾选框内容
         if ($("#recommend").is(':checked')) {
             form_data["recommend"] = true;
+        } else {
+            form_data["recommend"] = false;
         }
         if ($("#shareStatement").is(':checked')) {
             form_data["shareStatement"] = true;
+        } else {
+            form_data["shareStatement"] = false;
         }
         if ($("#appreciation").is(':checked')) {
             form_data["appreciation"] = true;
+        } else {
+            form_data["appreciation"] = false;
         }
         if ($("#commentabled").is(':checked')) {
             form_data["commentabled"] = true;
+        } else {
+            form_data["commentabled"] = false;
         }
         //console.log(form_data["commentabled"]);
         $.ajaxSetup({
@@ -293,24 +275,18 @@
             console.log(data);
         }, "json")
 
-    });
-    typeId();
-
-    function typeId() {
-        if ($("#typeBox").children().length == 0) {
-            $.get('/type', function (data) {
-                for (var i = 0; i < data.data.data.length; i++) {
-                    $("#typeBox").append('<div class="item" id="type" data-value="1">' + data.data.data[i].name + '</div>')
-                    $("#typeBox").children('div').eq(i).attr("nameId", data.data.data[i].id);
-
-                }
-
-            })
-        } else {
-            return;
-        }
-
     }
+
+    var blogType;
+    typeId();
+    $('#save-btn').click(function () {
+        postData(false);
+    });
+    $("#publish-btn").click(function () {
+        postData(true);
+    })
+
+
 </script>
 </body>
 </html>

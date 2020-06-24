@@ -47,14 +47,14 @@ public class RespUtil {
 
     public static RespUtil ok(){
         RespUtil respUtil = new RespUtil();
-        respUtil.code(1);
+        respUtil.code(200);
         respUtil.message("成功");
         return respUtil;
     }
 
     public static RespUtil error(){
         RespUtil respUtil = new RespUtil();
-        respUtil.code(0);
+        respUtil.code(500);
         respUtil.message("失败");
         return respUtil;
     }

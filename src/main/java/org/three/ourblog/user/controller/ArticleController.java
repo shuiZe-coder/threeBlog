@@ -22,4 +22,9 @@ public class ArticleController {
     public String add(){
         return "/admin/blogs-input";
     }
+
+    @GetMapping("/update/{id}")
+    public String update(){
+        return "/admin/blogs-input";
+    }
 }
