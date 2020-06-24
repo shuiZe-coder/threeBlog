@@ -272,7 +272,15 @@
         });
         //发起ajax请求
         $.post("/blog", JSON.stringify(form_data), function (data) {
-            console.log(data);
+            if (data.code == 200){
+                location.href = "/admin/article/manage";
+            }else{
+                if (published == false){
+                    alert("保存失败");
+                }else{
+                    alert("发布失败");
+                }
+            }
         }, "json")
 
     }
