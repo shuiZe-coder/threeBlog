@@ -58,6 +58,9 @@
         getAllData();
 
         $("#nextPage").click(function () {
+            if (currentPage >= $("#curPage")[0].textContent){
+                return
+            }
             currentPage++;
             showData(currentPage);
 
