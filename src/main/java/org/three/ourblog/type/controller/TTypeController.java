@@ -39,6 +39,10 @@ public class TTypeController {
         return RespUtil.ok().data("data", types);
     }
 
-
+    @GetMapping("/{id}")
+    public RespUtil getTypeById(@PathVariable("id") long id){
+        TType byId = typeService.getById(id);
+        return RespUtil.ok().data("data", byId);
+    }
 }
 
