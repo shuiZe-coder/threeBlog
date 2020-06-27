@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博文修改</title>
+    <link href="../../static/images/me.jpg" th:href="@{/images/me.jpg}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css"
+          th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+
+<!--导航-->
+<nav th:replace="~{/admin/common::topbar}"></nav>
+<div class="m-padded-tb-hugex">
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a href="javascript:void(0)" class="teal active item">发布</a>
+                <a href="/admin/article/manage" class="item">列表</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--中间内容-->
+<div class="">
+    <div class="ui container">
+        <form id="blog-form" action="/blog/content" method="post" class="ui form">
+            <input type="hidden" name="published">
+            <input type="hidden" name="id">
+
+            <div class="required field">
+                <div class="ui left labeled input">
+                    <div class="ui selection compact teal basic dropdown label">
+                        <input type="hidden" value="原创" name="flag">
+                        <i class="dropdown icon"></i>
+                        <div class="text">原创</div>
+                        <div class="menu">
+                            <div class="item" data-value="原创">原创</div>
+                            <div class="item" data-value="转载">转载</div>
+                            <div class="item" data-value="翻译">翻译</div>
+                        </div>
+                    </div>
+                    <input type="text" name="title" id="title" placeholder="标题">
+                </div>
+            </div>
+
+            <div class="required field">
+                <div class="" id="md-content" style="z-index: 1 !important;">
+                    <textarea placeholder="博客内容" name="content" style="display: none" id="content"></textarea>
+                </div>
+            </div>
+
+            <div class="two fields">
+                <div class="required field">
+                    <div class="ui left labeled action input">
+                        <label class="ui compact teal basic label">分类</label>
+                        <div class="ui fluid selection dropdown">
+                            <!--新增-->
+                            <input type="hidden" name="type.id">
+                            <!--编辑-->
+                            <input type="hidden" name="typeId">
+                            <i class="dropdown icon" id="getType"></i>
+                            <div class="default text" id="replaced">分类</div>
+                            <div class="menu" id="typeBox">
+                                <!--                                <div class="item" data-value="1">我的故事</div>-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="required field">
+                    <div class="ui left labeled input">
+                        <label class="ui teal basic label">首图</label>
+                        <input type="text" name="firstPicture" id="firstPictures" placeholder="首图引用地址">
+                    </div>
+                </div>
+            </div>
+
+            <div class="required field">
+                <textarea name="description" id="descriptions" placeholder="博客描述..." maxlength="200"></textarea>
+            </div>
+
+            <div class="inline fields">
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="recommend" name="recommend" checked class="hidden">
+                        <label for="recommend">推荐</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="shareStatement" name="shareStatement" class="hidden">
+                        <label for="shareStatement">转载声明</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="appreciation" name="appreciation" class="hidden">
+                        <label for="appreciation">赞赏</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="commentabled" name="commentabled" class="hidden">
+                        <label for="commentabled">评论</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui error message"></div>
+
+            <div class="ui right aligned container">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button type="button" id="save-btn" class="ui secondary button">保存</button>
+                <button type="button" id="publish-btn" class="ui teal button">发布</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<br>
+<br>
+<!--底部栏-->
+<footer th:replace="~{/admin/common::footbar}"></footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+
+
+<script>
+
+    // $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+
+    // 运行时间统计
+    function secondToDate(second) {
+        if (!second) {
+            return 0;
+        }
+        var time = new Array(0, 0, 0, 0, 0);
+        if (second >= 365 * 24 * 3600) {
+            time[0] = parseInt(second / (365 * 24 * 3600));
+            second %= 365 * 24 * 3600;
+        }
+        if (second >= 24 * 3600) {
+            time[1] = parseInt(second / (24 * 3600));
+            second %= 24 * 3600;
+        }
+        if (second >= 3600) {
+            time[2] = parseInt(second / 3600);
+            second %= 3600;
+        }
+        if (second >= 60) {
+            time[3] = parseInt(second / 60);
+            second %= 60;
+        }
+        if (second > 0) {
+            time[4] = second;
+        }
+        return time;
+    }
+
+    function setTime() {
+        /*此处为网站的创建时间*/
+        var create_time = Math.round(new Date(Date.UTC(2020, 1, 25, 15, 15, 15)).getTime() / 1000);
+        var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
+        currentTime = secondToDate((timestamp - create_time));
+        currentTimeHtml = currentTime[0] + '年' + currentTime[1] + '天'
+            + currentTime[2] + '时' + currentTime[3] + '分' + currentTime[4]
+            + '秒';
+        document.getElementById("htmer_time").innerHTML = currentTimeHtml;
+    }
+
+    setInterval(setTime, 1000);
+
+
+    //初始化Markdown编辑器
+    var contentEditor;
+    $(function () {
+        contentEditor = editormd("md-content", {
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+//        path    : "../static/lib/editormd/lib/"
+            path: "/lib/editormd/lib/"
+        });
+    });
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    });
+
+
+    /*$('#publish-btn').click(function () {
+        $('[name="published"]').val(true);
+        $('#blog-form').submit();
+    });*/
+
+
+    function typeId() {
+        if ($("#typeBox").children().length == 0) {
+            $.get('/type', function (data) {
+                for (var i = 0; i < data.data.data.length; i++) {
+                    $("#typeBox").append('<div class="item" id="type" data-value="1">' + data.data.data[i].name + '</div>')
+                    $("#typeBox").children('div').eq(i).attr("nameId", data.data.data[i].id);
+
+                }
+                //console.log($("#typeBox").children('div').length + "the one");
+                $("#typeBox").children('div').click(function () {
+                    //alert("调用成功");
+                    blogType = $(this).attr("nameId");
+                });
+            })
+        } else {
+            return;
+        }
+
+
+    }
+
+    function postData(published) {
+        var title = $("#title").val();
+        var content = $("#content").val();
+        var typeId = $("#type").nameId;
+        var firstPicture = $("#firstPictures").val();
+        var description = $("#descriptions").val();
+
+        //设置表单
+        var form_data = {
+            "title": title,
+            "content": content,
+            "typeId": blogType,
+            "firstPicture": firstPicture,
+            "description": description,
+            "published": published,
+
+        };
+        //获取勾选框内容
+        if ($("#recommend").is(':checked')) {
+            form_data["recommend"] = true;
+        } else {
+            form_data["recommend"] = false;
+        }
+        if ($("#shareStatement").is(':checked')) {
+            form_data["shareStatement"] = true;
+        } else {
+            form_data["shareStatement"] = false;
+        }
+        if ($("#appreciation").is(':checked')) {
+            form_data["appreciation"] = true;
+        } else {
+            form_data["appreciation"] = false;
+        }
+        if ($("#commentabled").is(':checked')) {
+            form_data["commentabled"] = true;
+        } else {
+            form_data["commentabled"] = false;
+        }
+        //console.log(form_data["commentabled"]);
+        $.ajaxSetup({
+            contentType: 'application/json'
+        });
+        //发起ajax请求
+        $.ajax({
+            url: "/blog"
+            , type: "PUT"
+            , dataType: "json"
+            , data: JSON.stringify(form_data)
+            , success: function (data) {
+                if (data.code == 200) {
+                    location.href = "/admin/article/manage";
+                } else {
+                    if (published == false) {
+                        alert("保存失败");
+                    } else {
+                        alert("发布失败");
+                    }
+                }
+            }
+
+        })
+
+    }
+
+    var blogType;
+    typeId();
+
+
+    //获取url的id值
+    function getId() {
+        var urls = window.location.href;
+        //console.log(urls.match(new RegExp(".*?/update/(.*)"))[1]);
+        return urls.match(new RegExp(".*?/update/(.*)"))[1];
+
+    }
+
+    var id = getId();
+    // alert(id);
+
+
+    // 请求数据, 并渲染
+    function getData() {
+        $.get("/blog/" + id, function (data) {
+            $("#title").val(data.data.data.title);
+            $("#content").html(data.data.data.content);
+            // $("#removed").remove();
+            $.get("/type/" + data.data.data.typeId, function (findData) {
+                $("#replaced").html(findData.data.data.name);
+                //console.log(findData.data.data.name);
+            }); //通过typeId获取tpye
+            $("#firstPictures").val(data.data.data.firstPicture);
+            $("#descriptions").html(data.data.data.description);
+            $("#recommend").prop("checked", data.data.data.recommend);// 推荐框
+            $("#shareStatement").prop("checked", data.data.data.shareStatement); //转载声明框
+            $("#appreciation").prop("checked", data.data.data.appreciation); //赞赏框
+            $("#commentabled").prop("checked", data.data.data.commentabled); //评论框
+            //console.log(data.data.data.content);
+        })
+    }
+
+    getData();
+    //将修改后的数据上传
+    $('#save-btn').click(function () {
+        postData(false);
+    });
+    $("#publish-btn").click(function () {
+        postData(true);
+    });
+
+</script>
+</body>
+</html>
