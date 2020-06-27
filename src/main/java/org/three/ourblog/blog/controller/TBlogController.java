@@ -1,6 +1,7 @@
 package org.three.ourblog.blog.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,9 @@ public class TBlogController {
     @GetMapping("/{current}/{limit}")
     public RespUtil blogByPage(@PathVariable long current, @PathVariable long limit){
         Page<TBlog> page = new Page<>(current, limit);
-        blogService.page(page);
+        QueryWrapper<TBlog> wrapper = new QueryWrapper<>();
+        wrapper.orderByDesc("update_time");
+        blogService.page(page, wrapper);
         List<BlogDescription> bds = blogService.selBlogDescription(page.getRecords());
         return RespUtil.ok().data("data", bds);
     }
@@ -46,9 +49,10 @@ public class TBlogController {
     @PostMapping("/{current}/{limit}")
     public RespUtil selectByInfo(@PathVariable long current, @PathVariable long limit,
                                  @RequestBody(required = false) BlogInfoVo blogInfoVo){
-        List<TBlog> blogs = blogService.selectByInfo(blogInfoVo, current, limit);
+        Page page = blogService.selectByInfo(blogInfoVo, current, limit);
+        List<TBlog> blogs = page.getRecords();
         List<BlogDescription> bds = blogService.selBlogDescription(blogs);
-        return RespUtil.ok().data("data", bds);
+        return RespUtil.ok().data("data", bds).data("total", page.getTotal());
     }
 
     @DeleteMapping("/{id}")

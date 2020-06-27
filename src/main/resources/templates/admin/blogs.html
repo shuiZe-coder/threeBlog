@@ -13,11 +13,13 @@
 <script>
     $(document).ready(function () {
         var currentPage = 1;
+        var blogType;
+
 
         function showData(page) {
             $("#curPage").html(page);
             $.get("/blog/" + page + "/5", function (data) {
-                for (i = 1; i < 6; i++) {
+                for (var i = 1; i < 6; i++) {
                     var item = data.data.data[i - 1];
                     if (item == undefined) {
                         $("#item" + i).hide();
@@ -40,6 +42,74 @@
             })
         }
 
+        $("#search-btn").click(function () {
+            form_data = {
+                "title": $("#searchTitle").val(),
+                // "typeId": blogType
+            }
+            if ($("#typeContent").val() != "" ){
+                form_data.typeId = blogType;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: "/blog/1/5",
+                data:JSON.stringify(form_data), //将对象转为为json字符串
+                dataType:"json",
+                contentType:"application/json", //这个必须，不然后台接受时会出现乱码现象
+                success:function(data) {
+                    for (var i = 1; i < 6; i++) {
+                        var item = data.data.data[i - 1];
+                        if (item == undefined) {
+                            $("#item" + i).hide();
+                            continue;
+                        } else {
+                            $("#item" + i).show();
+                        }
+                        $("#id" + i).html(item.id);
+                        $("#title" + i).html(item.title);
+                        $("#type" + i).html(item.type);
+                        $("#share" + i).html(item.shareStatement == false ? "否" : "是");
+                        $("#published" + i).html(item.published == false ? "草稿" : "已发布");
+                        $("#updateTime" + i).html(item.updateTime);
+                    }
+                    var count = data.data.total;
+                    $("#blogCount").html(count);
+                    var pageCount = Math.floor(count/5);
+                    if(count%5 != 0){
+                        pageCount++;
+                    }
+                    $("#pageCount").html(pageCount);
+                },
+                error:function(){
+                    alert("出错了");
+                }
+            });
+
+        });
+
+
+        function typeId() {
+            if ($("#typeBox").children().length == 0) {
+                $.get('/type', function (data) {
+                    for (var i = 0; i < data.data.data.length; i++) {
+                        $("#typeBox").append('<div class="item" data-value="1">' + data.data.data[i].name + '</div>')
+                        $("#typeBox").children('div').eq(i).attr("id", data.data.data[i].id);
+
+                    }
+                    //console.log($("#typeBox").children('div').length + "the one");
+                    $("#typeBox").children('div').click(function () {
+                        //alert("调用成功");
+                        blogType = $(this).attr("id");
+                    });
+                })
+            } else {
+                return;
+            }
+        }
+
+        typeId();
+
         // 请求页面获取ajax数据渲染到html
         showData(currentPage);
 
@@ -58,7 +128,7 @@
         getAllData();
 
         $("#nextPage").click(function () {
-            if (currentPage >= $("#curPage")[0].textContent){
+            if (currentPage >= $("#pageCount")[0].textContent){
                 return
             }
             currentPage++;
@@ -108,16 +178,16 @@
             <input type="hidden" name="page">
             <div class="inline fields">
                 <div class="field">
-                    <input type="text" name="title" placeholder="标题">
+                    <input type="text" name="title" id="searchTitle" placeholder="标题">
                 </div>
                 <div class="field">
                     <div class="ui labeled action input">
                         <div class="ui type selection dropdown">
-                            <input type="hidden" name="typeId">
+                            <input type="hidden" name="typeId" id="typeContent">
                             <i class="dropdown icon"></i>
                             <div class="default text">分类</div>
-                            <div class="menu">
-                                <div class="item" data-value="1">我的故事</div>
+                            <div class="menu" id="typeBox">
+<!--                                <div class="item" data-value="1">我的故事</div>-->
                             </div>
                         </div>
                         <button id="clear-btn" class="ui compact button">clear</button>
@@ -246,10 +316,10 @@
                 </tfoot>
             </table>
 
-            <div class="ui success message">
-                <i class="close icon"></i>
-                <div class="">提示：操作成功！</div>
-            </div>
+<!--            <div class="ui success message">-->
+<!--                <i class="close icon"></i>-->
+<!--                <div class="">提示：操作成功！</div>-->
+<!--            </div>-->
 
         </div>
 
@@ -336,8 +406,10 @@
 
     $('#clear-btn')
         .on('click', function () {
+            $("#searchTitle").val(null);
             $('.ui.type.dropdown')
                 .dropdown('clear');
+            blogType = undefined;
         });
 
     function page(obj) {
@@ -345,18 +417,18 @@
         loaddata();
     }
 
-    $("#search-btn").click(function () {
-        $("[name='page']").val(0);
-        loaddata();
-    });
+    // $("#search-btn").click(function () {
+    //     $("[name='page']").val(0);
+    //     loaddata();
+    // });
 
-    function loaddata() {
-        $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search", {
-            title: $("[name='title']").val(),
-            typeId: $("[name='typeId']").val(),
-            page: $("[name='page']").val()
-        });
-    }
+    // function loaddata() {
+    //     $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search", {
+    //         title: $("[name='title']").val(),
+    //         typeId: $("[name='typeId']").val(),
+    //         page: $("[name='page']").val()
+    //     });
+    // }
 
 </script>
 </body>

@@ -35,9 +35,10 @@ public class TBlogServiceImpl extends ServiceImpl<TBlogMapper, TBlog> implements
     private TTypeService typeService;
 
     @Override
-    public List<TBlog> selectByInfo(BlogInfoVo blogInfoVo, long current, long limit) {
+    public Page selectByInfo(BlogInfoVo blogInfoVo, long current, long limit) {
         Page<TBlog> page = new Page<>(current, limit);
         QueryWrapper wrapper = new QueryWrapper();
+        wrapper.orderByDesc("update_time");
         if (!StringUtils.isEmpty(blogInfoVo.getTitle())){
             wrapper.like("title", blogInfoVo.getTitle());
         }
@@ -45,7 +46,7 @@ public class TBlogServiceImpl extends ServiceImpl<TBlogMapper, TBlog> implements
             wrapper.eq("type_id", blogInfoVo.getTypeId());
         }
         this.page(page, wrapper);
-        return page.getRecords();
+        return page;
     }
 
     @Override

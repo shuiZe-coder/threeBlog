@@ -1,5 +1,6 @@
 package org.three.ourblog.blog.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.three.ourblog.blog.pojo.TBlog;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.three.ourblog.blog.pojo.vo.BlogDescription;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public interface TBlogService extends IService<TBlog> {
 
-    List<TBlog> selectByInfo(BlogInfoVo blogInfoVo, long current, long limit);
+    Page selectByInfo(BlogInfoVo blogInfoVo, long current, long limit);
 
     List<BlogDescription> selBlogDescription(List<TBlog> blogs);
 }
