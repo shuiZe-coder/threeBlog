@@ -91,7 +91,10 @@ public class TBlogController {
     @PutMapping
     @Transactional
     public RespUtil updateBlog(@RequestBody TBlog blog){
-        boolean update = blogService.update(blog, null);
+        boolean update = false;
+        if (blog.getId() != null) {
+            update = blogService.updateById(blog);
+        }
         if (update){
             return RespUtil.ok().message("修改博客成功");
         }else{

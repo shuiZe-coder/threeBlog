@@ -18,4 +18,9 @@ public class AdminTypeController {
     public String showAddTypePage(){
         return "/admin/types-input";
     }
+
+    @GetMapping("/update/{id}")
+    public String update(){
+        return "/admin/blogs-update";
+    }
 }

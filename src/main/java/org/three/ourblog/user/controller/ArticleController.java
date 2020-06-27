@@ -25,6 +25,6 @@ public class ArticleController {
 
     @GetMapping("/update/{id}")
     public String update(){
-        return "/admin/blogs-input";
+        return "/admin/blogs-update";
     }
 }

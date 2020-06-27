@@ -90,3 +90,130 @@
 2020-06-27 09:04:50.827  INFO 10640 --- [restartedMain] org.three.ourblog.OurblogApplication     : Started OurblogApplication in 2.504 seconds (JVM running for 3.314)
 2020-06-27 09:04:58.059  INFO 10640 --- [http-nio-9999-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
 2020-06-27 09:04:58.192  INFO 10640 --- [http-nio-9999-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-27 09:07:04.772  INFO 3640 --- [restartedMain] org.three.ourblog.OurblogApplication     : Starting OurblogApplication on LAPTOP-PERCPGEN with PID 3640 (F:\Java\javaCode2\ourblog\target\classes started by ASUS in F:\Java\javaCode2\ourblog)
+2020-06-27 09:07:04.774  INFO 3640 --- [restartedMain] org.three.ourblog.OurblogApplication     : The following profiles are active: dev
+2020-06-27 09:07:04.807  INFO 3640 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-27 09:07:04.807  INFO 3640 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-27 09:07:05.667  INFO 3640 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
+2020-06-27 09:07:05.672  INFO 3640 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-27 09:07:05.673  INFO 3640 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-06-27 09:07:05.727  INFO 3640 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-27 09:07:05.727  INFO 3640 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 920 ms
+2020-06-27 09:07:06.469  INFO 3640 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-27 09:07:06.525  INFO 3640 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-27 09:07:06.547  INFO 3640 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-27 09:07:06.563  INFO 3640 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-06-27 09:07:06.749  INFO 3640 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-27 09:07:06.750  INFO 3640 --- [restartedMain] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-27 09:07:06.758  INFO 3640 --- [restartedMain] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-06-27 09:07:06.759  INFO 3640 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9999 (http) with context path ''
+2020-06-27 09:07:06.760  INFO 3640 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-27 09:07:06.775  INFO 3640 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-27 09:07:06.810  INFO 3640 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-27 09:07:06.944  INFO 3640 --- [restartedMain] org.three.ourblog.OurblogApplication     : Started OurblogApplication in 2.4 seconds (JVM running for 3.159)
+2020-06-27 09:08:44.378  INFO 3640 --- [http-nio-9999-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-27 09:08:44.528  INFO 3640 --- [http-nio-9999-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-27 09:38:24.634  INFO 2648 --- [restartedMain] org.three.ourblog.OurblogApplication     : Starting OurblogApplication on LAPTOP-PERCPGEN with PID 2648 (F:\Java\javaCode2\ourblog\target\classes started by ASUS in F:\Java\javaCode2\ourblog)
+2020-06-27 09:38:24.636  INFO 2648 --- [restartedMain] org.three.ourblog.OurblogApplication     : The following profiles are active: dev
+2020-06-27 09:38:24.675  INFO 2648 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-27 09:38:24.675  INFO 2648 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-27 09:38:25.499  INFO 2648 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
+2020-06-27 09:38:25.504  INFO 2648 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-27 09:38:25.504  INFO 2648 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-06-27 09:38:25.556  INFO 2648 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-27 09:38:25.557  INFO 2648 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 882 ms
+2020-06-27 09:38:26.277  INFO 2648 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-27 09:38:26.318  INFO 2648 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-27 09:38:26.338  INFO 2648 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-27 09:38:26.353  INFO 2648 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-06-27 09:38:26.483  INFO 2648 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-27 09:38:26.484  INFO 2648 --- [restartedMain] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-27 09:38:26.487  INFO 2648 --- [restartedMain] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2020-06-27 09:38:26.488  INFO 2648 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9999 (http) with context path ''
+2020-06-27 09:38:26.488  INFO 2648 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-27 09:38:26.496  INFO 2648 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-27 09:38:26.520  INFO 2648 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-27 09:38:26.641  INFO 2648 --- [restartedMain] org.three.ourblog.OurblogApplication     : Started OurblogApplication in 2.294 seconds (JVM running for 3.073)
+2020-06-27 09:38:44.230  INFO 2648 --- [http-nio-9999-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-27 09:38:44.341  INFO 2648 --- [http-nio-9999-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-27 12:48:58.753  INFO 14944 --- [restartedMain] org.three.ourblog.OurblogApplication     : Starting OurblogApplication on LAPTOP-PERCPGEN with PID 14944 (F:\Java\javaCode2\ourblog\target\classes started by ASUS in F:\Java\javaCode2\ourblog)
+2020-06-27 12:48:58.755  INFO 14944 --- [restartedMain] org.three.ourblog.OurblogApplication     : The following profiles are active: dev
+2020-06-27 12:48:58.801  INFO 14944 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-27 12:48:58.801  INFO 14944 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-27 12:48:59.732  INFO 14944 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
+2020-06-27 12:48:59.737  INFO 14944 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-27 12:48:59.737  INFO 14944 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-06-27 12:48:59.794  INFO 14944 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-27 12:48:59.794  INFO 14944 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 993 ms
+2020-06-27 12:49:00.589  INFO 14944 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-27 12:49:00.631  INFO 14944 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-27 12:49:00.651  WARN 14944 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2020-06-27 12:49:00.667  INFO 14944 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-06-27 12:49:00.848  WARN 14944 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 9999 is already in use
+2020-06-27 12:49:00.849  INFO 14944 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-27 12:49:00.851  INFO 14944 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-06-27 12:49:00.860  INFO 14944 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-06-27 12:49:00.863 ERROR 14944 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 9999 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 9999 or configure this application to listen on another port.
+
+2020-06-27 12:49:15.723  INFO 5852 --- [restartedMain] org.three.ourblog.OurblogApplication     : Starting OurblogApplication on LAPTOP-PERCPGEN with PID 5852 (F:\Java\javaCode2\ourblog\target\classes started by ASUS in F:\Java\javaCode2\ourblog)
+2020-06-27 12:49:15.725  INFO 5852 --- [restartedMain] org.three.ourblog.OurblogApplication     : The following profiles are active: dev
+2020-06-27 12:49:15.765  INFO 5852 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-27 12:49:15.765  INFO 5852 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-27 12:49:16.607  INFO 5852 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
+2020-06-27 12:49:16.613  INFO 5852 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-27 12:49:16.613  INFO 5852 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-06-27 12:49:16.664  INFO 5852 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-27 12:49:16.664  INFO 5852 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 899 ms
+2020-06-27 12:49:17.388  INFO 5852 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-27 12:49:17.429  INFO 5852 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-27 12:49:17.450  INFO 5852 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-27 12:49:17.465  INFO 5852 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-06-27 12:49:17.595  INFO 5852 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-27 12:49:17.596  INFO 5852 --- [restartedMain] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-27 12:49:17.606  INFO 5852 --- [restartedMain] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-06-27 12:49:17.607  INFO 5852 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9999 (http) with context path ''
+2020-06-27 12:49:17.608  INFO 5852 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-27 12:49:17.617  INFO 5852 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-27 12:49:17.649  INFO 5852 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-27 12:49:17.697  INFO 5852 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingGET_1
+2020-06-27 12:49:17.816  INFO 5852 --- [restartedMain] org.three.ourblog.OurblogApplication     : Started OurblogApplication in 2.361 seconds (JVM running for 3.096)
+2020-06-27 12:49:22.297  INFO 5852 --- [http-nio-9999-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-27 12:49:22.454  INFO 5852 --- [http-nio-9999-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-27 12:51:15.452  INFO 332 --- [restartedMain] org.three.ourblog.OurblogApplication     : Starting OurblogApplication on LAPTOP-PERCPGEN with PID 332 (F:\Java\javaCode2\ourblog\target\classes started by ASUS in F:\Java\javaCode2\ourblog)
+2020-06-27 12:51:15.454  INFO 332 --- [restartedMain] org.three.ourblog.OurblogApplication     : The following profiles are active: dev
+2020-06-27 12:51:15.512  INFO 332 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-27 12:51:15.513  INFO 332 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-27 12:51:16.440  INFO 332 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
+2020-06-27 12:51:16.446  INFO 332 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-27 12:51:16.446  INFO 332 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-06-27 12:51:16.505  INFO 332 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-27 12:51:16.505  INFO 332 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 992 ms
+2020-06-27 12:51:17.237  INFO 332 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-27 12:51:17.281  INFO 332 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-27 12:51:17.302  INFO 332 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-27 12:51:17.317  INFO 332 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-06-27 12:51:17.449  INFO 332 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-27 12:51:17.450  INFO 332 --- [restartedMain] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-27 12:51:17.453  INFO 332 --- [restartedMain] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2020-06-27 12:51:17.453  INFO 332 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9999 (http) with context path ''
+2020-06-27 12:51:17.454  INFO 332 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-27 12:51:17.462  INFO 332 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-27 12:51:17.487  INFO 332 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-27 12:51:17.521  INFO 332 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingGET_1
+2020-06-27 12:51:17.615  INFO 332 --- [restartedMain] org.three.ourblog.OurblogApplication     : Started OurblogApplication in 2.404 seconds (JVM running for 3.137)
+2020-06-27 12:51:19.062  INFO 332 --- [http-nio-9999-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-27 12:51:19.207  INFO 332 --- [http-nio-9999-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
